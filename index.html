@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div className='tela'>
+    <header>SUSHI MANIA</header>
+    <div className='menubar'>
+        <p>MENU</p>
+        <p>COMPRAR</p>
+        <p>ATUALIZAÇÕES</p>
+        <span></span>
+        <p>OPÇÕES</p>
+    </div>
+    <main>
+        <div className='itens'>
+        <h1>PESCAR PEIXE</h1>
+        <span>
+            <h2>CLIQUE</h2>
+            <div className='iconItem' onClick={Pescar}></div>
+            <p id='qtdPesca'>0</p>
+            <p className='peixes'>PEIXES</p>
+        </span>
+        <div className='botoesIdle'>
+            <button onClick={UpgradePx}>UPGRADE <p id='valUpPx'>1.000</p></button>
+            <div></div>
+            <button onClick={VenderPx}>VENDER <p id='valVenPx'>00</p></button>
+        </div>
+        </div>
+
+        <div className='itens'>
+        <h1>CORTAR PEIXE</h1>
+        <span>
+            <div className='iconItem'>a</div>
+            <p>QUANTIDADE</p>
+        </span>
+            <p>aaaaaaaaaaaaa</p>
+            <button>ATUALIZAR</button>
+        </div>
+
+        <div className='itens'>
+        <h1>CORTAR PEIXE</h1>
+        <span>
+            <div className='iconItem'>a</div>
+            <p>QUANTIDADE</p>
+        </span>
+            <p>aaaaaaaaaaaaa</p>
+            <button>ATUALIZAR</button>
+        </div>
+
+        <div className='itens'>
+        <h1>CORTAR PEIXE</h1>
+        <span>
+            <div className='iconItem'>a</div>
+            <p>QUANTIDADE</p>
+        </span>
+            <p>aaaaaaaaaaaaa</p>
+            <button>ATUALIZAR</button>
+        </div>
+
+        <div className='itens' id='ulI'>
+            <h1>DINHEIRO</h1>
+            <h2 id='atualDin'>0,00</h2>
+            <div></div>
+        </div>
+    </main>
+        <footer>DESENVOLVIDO POR <a href="#">Werickson de Souza Dauta</a></footer>
+    </div>
+</body>
+</html>
