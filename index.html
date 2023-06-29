@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div className='tela'>
+    <div class='tela'>
     <header>SUSHI MANIA</header>
-    <div className='menubar'>
+    <div class='menubar'>
         <p>MENU</p>
         <p>COMPRAR</p>
         <p>ATUALIZAÇÕES</p>
@@ -17,52 +17,68 @@
         <p>OPÇÕES</p>
     </div>
     <main>
-        <div className='itens'>
-        <h1>PESCAR PEIXE</h1>
-        <span>
-            <h2>CLIQUE</h2>
-            <div className='iconItem' onClick={Pescar}></div>
-            <p id='qtdPesca'>0</p>
-            <p className='peixes'>PEIXES</p>
-        </span>
-        <div className='botoesIdle'>
-            <button onClick={UpgradePx}>UPGRADE <p id='valUpPx'>1.000</p></button>
-            <div></div>
-            <button onClick={VenderPx}>VENDER <p id='valVenPx'>00</p></button>
-        </div>
-        </div>
-
-        <div className='itens'>
-        <h1>CORTAR PEIXE</h1>
-        <span>
-            <div className='iconItem'>a</div>
-            <p>QUANTIDADE</p>
-        </span>
-            <p>aaaaaaaaaaaaa</p>
-            <button>ATUALIZAR</button>
+        <div class='itens'>
+            <h1>PESCAR PEIXE</h1>
+            <span>
+                <h2>CLIQUE</h2>
+                <div class='iconItem' onClick="Pescar()"></div>
+                <p id='qtdPesca'>0</p>
+                <p class='peixes'>PEIXES</p>
+            </span>
+            <div class='botoesIdle'>
+                <button type="button" onClick="UpgradePx()">UPGRADE <p id='valUpPx'>1.000</p></button>
+                <div></div>
+                <button type="button" onClick="VenderPx()">VENDER <p id='valVenPx'>00</p></button>
+            </div>
         </div>
 
-        <div className='itens'>
-        <h1>CORTAR PEIXE</h1>
-        <span>
-            <div className='iconItem'>a</div>
-            <p>QUANTIDADE</p>
-        </span>
-            <p>aaaaaaaaaaaaa</p>
-            <button>ATUALIZAR</button>
+        <div class='itens'>
+            <h1>CORTAR PEIXE</h1>
+            <span>
+                <h2>CLIQUE</h2>
+                <div class='iconItem' onClick="Cortar()"></div>
+                <p id='qtdCorte'>0</p>
+                <p class='peixes'>FILÉS</p>
+            </span>
+            <div class='botoesIdle'>
+                <button type="button" onClick="UpgradeCt()">UPGRADE<p id='valUpCt'>6.000</p></button>
+                <div></div>
+                <button type="button" onClick="VenderCt()">VENDER<p id='valVenCt'>00</p></button>
+            </div>
         </div>
 
-        <div className='itens'>
-        <h1>CORTAR PEIXE</h1>
-        <span>
-            <div className='iconItem'>a</div>
-            <p>QUANTIDADE</p>
-        </span>
-            <p>aaaaaaaaaaaaa</p>
-            <button>ATUALIZAR</button>
+        <div class='itens'>
+            <h1>PESCAR PEIXE</h1>
+            <span>
+                <h2>CLIQUE</h2>
+                <div class='iconItem' onClick="Pescar()"></div>
+                <p id='qtdPesca'>0</p>
+                <p class='peixes'>PEIXES</p>
+            </span>
+            <div class='botoesIdle'>
+                <button type="button" onClick="UpgradePx()">UPGRADE <p id='valUpPx'>1.000</p></button>
+                <div></div>
+                <button type="button" onClick="VenderPx()">VENDER <p id='valVenPx'>00</p></button>
+            </div>
         </div>
 
-        <div className='itens' id='ulI'>
+        <div class='itens'>
+            <h1>PESCAR PEIXE</h1>
+            <span>
+                <h2>CLIQUE</h2>
+                <div class='iconItem' onClick="Pescar()"></div>
+                <p id='qtdPesca'>0</p>
+                <p class='peixes'>PEIXES</p>
+            </span>
+            <div class='botoesIdle'>
+                <button type="button" onClick="UpgradePx()">UPGRADE <p id='valUpPx'>1.000</p></button>
+                <div></div>
+                <button type="button" onClick="VenderPx()">VENDER <p id='valVenPx'>00</p></button>
+            </div>
+        </div>
+
+       
+        <div class='itens' id='ulI'>
             <h1>DINHEIRO</h1>
             <h2 id='atualDin'>0,00</h2>
             <div></div>
@@ -70,5 +86,88 @@
     </main>
         <footer>DESENVOLVIDO POR <a href="#">Werickson de Souza Dauta</a></footer>
     </div>
+
+    <script>
+                
+        var totalDin = 0.00;        
+        var dinTela = document.getElementById('atualDin');
+        //////////////////////////////// PESCA
+        var valorPx = 12.00;
+        var totalPx = 0;
+        var upPxVal = 1000;
+        var qtdPx = 1;
+        var qtdPxTela= document.getElementById('qtdPesca');
+        var totalVenPx = document.getElementById('valVenPx');
+        var totalValUp = document.getElementById('valUpPx');
+        /////////////////////////////// CORTE
+        var qtdCt = 2;
+        var valorCt = 18;
+        var upCtVal = 6000;
+        var totalCt = 0;
+        var qtdCtTela= document.getElementById('qtdCorte');
+        var totalVenCt = document.getElementById('valVenCt');
+        var totalValUpCt = document.getElementById('valUpCt');
+        ///////////////////////////////
+
+
+        ///////////////////PEIXE
+        function Pescar(){    
+            totalPx += qtdPx;
+            qtdPxTela.textContent = totalPx;    
+            totalVenPx.textContent = valorPx * totalPx;
+        }
+
+        function UpgradePx(){
+            if(totalDin >= upPxVal){
+                qtdPx += 1;
+                totalDin -= upPxVal;
+                dinTela.textContent = totalDin;
+                upPxVal = upPxVal * 2.5;        
+                totalValUp.textContent = upPxVal;
+            } else {
+                return;
+            }
+        }
+
+        function VenderPx(){
+            totalDin += valorPx * totalPx;
+            dinTela.textContent = totalDin;
+            totalPx = 0;  
+            qtdPxTela.textContent = totalPx;    
+            totalVenPx.textContent = valorPx * totalPx;
+        }
+
+        ////////////////////CORTE
+        function Cortar(){ 
+            if(totalPx > 0){   
+            totalCt += qtdCt;
+            totalPx -= 1;
+            qtdCtTela.textContent = totalCt; 
+            qtdPxTela.textContent = totalPx;    
+            totalVenPx.textContent = valorPx * totalPx;                
+            totalVenCt.textContent = valorCt * totalCt;
+            }
+        }
+
+        function UpgradeCt(){
+            if(totalDin >= upCtVal){
+                qtdCt += 4;
+                totalDin -= upCtVal;
+                dinTela.textContent = totalDin;
+                upCtVal = upCtVal * 2.5;        
+                totalValUpCt.textContent = upCtVal;
+            } else {
+                return;
+            }
+        }
+
+        function VenderCt(){
+            totalDin += valorCt * totalCt;
+            dinTela.textContent = totalDin;
+            totalCt = 0;  
+            qtdCtTela.textContent = totalCt;    
+            totalVenCt.textContent = valorCt * totalCt;
+        }
+    </script>
 </body>
 </html>
