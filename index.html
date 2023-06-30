@@ -12,8 +12,8 @@
 
     <div class="menubar">
         <p onclick="NavBar(1)" id="umum">2X VENDAS - 10000</p>
-        <p onclick="NavBar(2)" id="doisdois">MAX VENDAS - 5000</p>
-        <p onclick="NavBar(3)" id="trestres">2X VENDAS 2 - 50000</p>        
+        <p onclick="NavBar(2)" id="doisdois">2X PRODUÇÃO - 5000</p>
+        <p onclick="NavBar(3)" id="trestres">PESCA AUTOMATICA - 10000</p>        
         <p onclick="NavBar(4)" id="quaqua">PIX BOLSONARO</p>
     </div>
 
@@ -128,8 +128,12 @@
         var qtdSsTela= document.getElementById('qtdSushi');
         var totalVenSs = document.getElementById('valVenSs');
         var totalValUpSs = document.getElementById('valUpSs');
-        ///////////////////////////////SUSHI
-
+        ///////////////////////////////MENU
+        var pix = document.getElementById('pix');
+        var precoVendas = 10000;
+        var precoProd = 5000;
+        var orecoAuto = 10000;
+        var quatro = 0;
 
         ///////////////////PEIXE
         function Pescar(){    
@@ -277,11 +281,6 @@
         }
         /////////////////////////// MENUBAR
         function NavBar(esc){
-            var pix = document.getElementById('pix');
-            var um = 0;
-            var dois = 0;
-            var tres = 0;
-            var quatro = 0;
             switch(esc){
                 case 1:
                     if(um == 0 && totalDin > 10000){
@@ -291,9 +290,9 @@
                     }                    
                 break;
                 case 2:
-                    if(dois == 0 && totalDin > 5000){
+                    if(dois > 4 && totalDin > 5000){
                         maxx = 2;
-                        dois = 1;
+                        dois += 1;
                         document.getElementById('doisdois').style.color = ('#ee7a88');
                     } 
                 break;
@@ -309,6 +308,12 @@
                 dinTela.textContent = totalDin;
                 break;
 
+            }
+        }
+    
+        function desbVendas(){
+            if (totalDin >= precoVendas){
+                
             }
         }
     </script>
