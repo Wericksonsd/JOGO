@@ -9,16 +9,17 @@
 <body>
     <div class='tela'>
     <header>SUSHI MANIA</header>
-    <div class='menubar'>
-        <p>MENU</p>
-        <p>COMPRAR</p>
-        <p>ATUALIZAÇÕES</p>
-        <span></span>
-        <p>OPÇÕES</p>
+
+    <div class="menubar">
+        <p onclick="NavBar(1)" id="umum">2X VENDAS - 10000</p>
+        <p onclick="NavBar(2)" id="doisdois">MAX VENDAS - 5000</p>
+        <p onclick="NavBar(3)" id="trestres">2X VENDAS 2 - 50000</p>        
+        <p onclick="NavBar(4)" id="quaqua">PIX BOLSONARO - <span id="pix">100000</span></p>
     </div>
+
     <main>
         <div class='itens'>
-            <h1>PESCAR PEIXE</h1>
+            <h1>PESCAR</h1>
             <span>
                 <h2>CLIQUE</h2>
                 <div class='iconItem' onClick="Pescar()"></div>
@@ -33,7 +34,7 @@
         </div>
 
         <div class='itens'>
-            <h1>CORTAR PEIXE</h1>
+            <h1>CORTAR</h1>
             <span>
                 <h2>CLIQUE</h2>
                 <div class='iconItem' onClick="Cortar()"></div>
@@ -48,32 +49,32 @@
         </div>
 
         <div class='itens'>
-            <h1>PESCAR PEIXE</h1>
+            <h1>PICAR</h1>
             <span>
                 <h2>CLIQUE</h2>
-                <div class='iconItem' onClick="Pescar()"></div>
-                <p id='qtdPesca'>0</p>
-                <p class='peixes'>PEIXES</p>
+                <div class='iconItem' onClick="Picar()"></div>
+                <p id='qtdPica'>0</p>
+                <p class='peixes'>FILETES</p>
             </span>
             <div class='botoesIdle'>
-                <button type="button" onClick="UpgradePx()">UPGRADE <p id='valUpPx'>1.000</p></button>
+                <button type="button" onClick="UpgradePc()">UPGRADE <p id='valUpPc'>20.000</p></button>
                 <div></div>
-                <button type="button" onClick="VenderPx()">VENDER <p id='valVenPx'>00</p></button>
+                <button type="button" onClick="VenderPc()">VENDER <p id='valVenPc'>00</p></button>
             </div>
         </div>
 
         <div class='itens'>
-            <h1>PESCAR PEIXE</h1>
+            <h1>SUSHI</h1>
             <span>
                 <h2>CLIQUE</h2>
-                <div class='iconItem' onClick="Pescar()"></div>
-                <p id='qtdPesca'>0</p>
-                <p class='peixes'>PEIXES</p>
+                <div class='iconItem' onClick="Sushi()"></div>
+                <p id='qtdSushi'>0</p>
+                <p class='peixes'>SUSHIS</p>
             </span>
             <div class='botoesIdle'>
-                <button type="button" onClick="UpgradePx()">UPGRADE <p id='valUpPx'>1.000</p></button>
+                <button type="button" onClick="UpgradeSs()">UPGRADE <p id='valUpSs'>50.000</p></button>
                 <div></div>
-                <button type="button" onClick="VenderPx()">VENDER <p id='valVenPx'>00</p></button>
+                <button type="button" onClick="VenderSs()">VENDER <p id='valVenSs'>00</p></button>
             </div>
         </div>
 
@@ -81,16 +82,20 @@
         <div class='itens' id='ulI'>
             <h1>DINHEIRO</h1>
             <h2 id='atualDin'>0,00</h2>
-            <div></div>
+            <div ><p id="segredo"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">SEGREDO</a></p></div>
         </div>
     </main>
-        <footer>DESENVOLVIDO POR <a href="#">Werickson de Souza Dauta</a></footer>
+        <footer>DESENVOLVIDO POR <a href="https://github.com/Wericksonsd" target="_blank">Werickson de Souza Dauta</a></footer>
     </div>
 
     <script>
+
                 
         var totalDin = 0.00;        
         var dinTela = document.getElementById('atualDin');
+        var pix = 100000;
+        var bonus = 1;
+        var maxx = 0;
         //////////////////////////////// PESCA
         var valorPx = 12.00;
         var totalPx = 0;
@@ -107,7 +112,23 @@
         var qtdCtTela= document.getElementById('qtdCorte');
         var totalVenCt = document.getElementById('valVenCt');
         var totalValUpCt = document.getElementById('valUpCt');
-        ///////////////////////////////
+        /////////////////////////////// PICAR
+        var qtdPc = 12;
+        var valorPc = 4;
+        var upPcVal = 20000;
+        var totalPc = 0;
+        var qtdPcTela= document.getElementById('qtdPica');
+        var totalVenPc = document.getElementById('valVenPc');
+        var totalValUpPc = document.getElementById('valUpPc');
+        ///////////////////////////////SUSHI
+        var qtdSs = 3;
+        var valorSs = 20;
+        var upSsVal = 50000;
+        var totalSs = 0;
+        var qtdSsTela= document.getElementById('qtdSushi');
+        var totalVenSs = document.getElementById('valVenSs');
+        var totalValUpSs = document.getElementById('valUpSs');
+        ///////////////////////////////SUSHI
 
 
         ///////////////////PEIXE
@@ -130,18 +151,23 @@
         }
 
         function VenderPx(){
-            totalDin += valorPx * totalPx;
+            totalDin += (valorPx * totalPx)* bonus;
             dinTela.textContent = totalDin;
             totalPx = 0;  
             qtdPxTela.textContent = totalPx;    
             totalVenPx.textContent = valorPx * totalPx;
+            Rick();
         }
 
         ////////////////////CORTE
-        function Cortar(){ 
+        function Cortar(){
+            var mx = 1;
             if(totalPx > 0){   
-            totalCt += qtdCt;
-            totalPx -= 1;
+                if(maxx == 2){
+                    mx = totalPx;
+                }
+            totalCt += qtdCt*mx;
+            totalPx -= 1*mx;
             qtdCtTela.textContent = totalCt; 
             qtdPxTela.textContent = totalPx;    
             totalVenPx.textContent = valorPx * totalPx;                
@@ -162,11 +188,135 @@
         }
 
         function VenderCt(){
-            totalDin += valorCt * totalCt;
+            totalDin += (valorCt * totalCt)* bonus;
             dinTela.textContent = totalDin;
             totalCt = 0;  
             qtdCtTela.textContent = totalCt;    
             totalVenCt.textContent = valorCt * totalCt;
+            Rick();
+        }
+
+        /////////////////////PICAR
+        function Picar(){
+            var mx = 1;
+            if(totalCt > 0){  
+                if(maxx == 2){
+                    mx = totalCt;
+                } 
+            totalPc += qtdPc*mx;
+            totalCt -= 1*mx;
+            qtdCtTela.textContent = totalCt; 
+            qtdPcTela.textContent = totalPc;    
+            totalVenPc.textContent = valorPc * totalPc;                
+            totalVenCt.textContent = valorCt * totalCt;
+            }
+        }
+
+        function UpgradePc(){
+            if(totalDin >= upPcVal){
+                qtdPc += 5;
+                totalDin -= upPcVal;
+                dinTela.textContent = totalDin;
+                upPcVal = upPcVal * 2;        
+                totalValUpPc.textContent = upPcVal;
+            } else {
+                return;
+            }
+        }
+
+        function VenderPc(){
+            totalDin += (valorPc * totalPc)* bonus;
+            dinTela.textContent = totalDin;
+            totalPc = 0;  
+            qtdPcTela.textContent = totalPc;    
+            totalVenPc.textContent = valorPc * totalPc;
+            Rick();
+        }
+
+        /////////////////////SUSHI
+        function Sushi(){ 
+            var mx = 1;
+            if(totalPc > 2){ 
+                if(maxx == 2){
+                    mx = totalPc/3;
+                }  
+            totalSs += qtdSs*mx;
+            totalPc -= 3*mx;
+            qtdSsTela.textContent = totalSs; 
+            qtdPcTela.textContent = totalPc;    
+            totalVenPc.textContent = valorPc * totalPc;                
+            totalVenSs.textContent = valorSs * totalSs;
+            }
+        }
+
+        function UpgradeSs(){
+            if(totalDin >= upSsVal){
+                qtdSs += 2;
+                totalDin -= upSsVal;
+                dinTela.textContent = totalDin;
+                upSsVal = upSsVal * 2;        
+                totalValUpSs.textContent = upSsVal;
+            } else {
+                return;
+            }
+        }
+
+        function VenderSs(){
+            totalDin += (valorSs * totalSs)* bonus;
+            dinTela.textContent = totalDin;
+            totalSs = 0;  
+            qtdSsTela.textContent = totalSs;    
+            totalVenSs.textContent = valorSs * totalSs;
+            Rick();
+        }
+        //////////////////////////// RICKY
+        function Rick(){
+            if(totalDin>30000){
+                document.getElementById('segredo').style.display = ('block'); 
+            }
+        }
+        /////////////////////////// MENUBAR
+        function NavBar(esc){
+            var pix = document.getElementById('pix');
+            var um = 0;
+            var dois = 0;
+            var tres = 0;
+            var quatro = 0;
+            switch(esc){
+                case 1:
+                    if(um == 0 && totalDin > 10000){
+                        bonus * 2;
+                        um = 1;
+                        document.getElementById('umum').style.color = ('#ee7a88');
+                    }                    
+                break;
+                case 2:
+                    if(dois == 0 && totalDin > 5000){
+                        maxx = 2;
+                        dois = 1;
+                        document.getElementById('doisdois').style.color = ('#ee7a88');
+                    } 
+                break;
+                case 3:
+                    if(tres == 0 && totalDin > 50000){
+                            bonus * 2;
+                            tres = 1;
+                            document.getElementById('trestres').style.color = ('#ee7a88');
+                    } 
+                break;
+                case 4:                
+                if(pix > 0){
+                        pix -= totalDin;
+                        if(pix < 0){
+                            pix = 0;
+                        }
+                        document.getElementById('pix').textContent = pix;
+                } else {                    
+                    document.getElementById('quaqua').style.color = ('#ee7a88');
+                }
+                break;
+
+            }
         }
     </script>
 </body>

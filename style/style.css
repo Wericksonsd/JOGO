@@ -38,15 +38,12 @@ header{
   background-color:#be123c;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-left: 40px;
-}
-
-.menubar>span{
-  flex-grow: 5;
+  padding-left: 100px;
+  justify-content: space-around;
 }
 
 .menubar>p{
+  color: #fecdd3;
   flex-grow: 1;
   font-weight: 500;
 }
@@ -69,6 +66,7 @@ main{
   background-color: #ffe4e6;
   color: #727272;
   row-gap: 2px;
+  font-size: 2em;
   margin: 0 8px 0 0;
   display: flex;
   flex-direction: column; 
@@ -113,11 +111,14 @@ main{
 }
 
 #ulI>h2{
-  font-size: 3em;
+  font-size: 2em;
 }
 
-
-
+#segredo{
+  font-size: 1.3em;
+  font-weight: 600;
+  display: none;
+}
 
 .botoesIdle{
   display: flex;
