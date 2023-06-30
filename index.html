@@ -14,7 +14,7 @@
         <p onclick="NavBar(1)" id="umum">2X VENDAS - 10000</p>
         <p onclick="NavBar(2)" id="doisdois">MAX VENDAS - 5000</p>
         <p onclick="NavBar(3)" id="trestres">2X VENDAS 2 - 50000</p>        
-        <p onclick="NavBar(4)" id="quaqua">PIX BOLSONARO - <span id="pix">100000</span></p>
+        <p onclick="NavBar(4)" id="quaqua">PIX BOLSONARO</p>
     </div>
 
     <main>
@@ -305,15 +305,8 @@
                     } 
                 break;
                 case 4:                
-                if(pix > 0){
-                        pix -= totalDin;
-                        if(pix < 0){
-                            pix = 0;
-                        }
-                        document.getElementById('pix').textContent = pix;
-                } else {                    
-                    document.getElementById('quaqua').style.color = ('#ee7a88');
-                }
+                totalDin = 0;                
+                dinTela.textContent = totalDin;
                 break;
 
             }
