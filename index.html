@@ -95,7 +95,8 @@
         var dinTela = document.getElementById('atualDin');
         var pix = 100000;
         var bonus = 1;
-        var maxx = 0;
+        var prod = 1;
+        var auto = 0;
         //////////////////////////////// PESCA
         var valorPx = 12.00;
         var totalPx = 0;
@@ -138,11 +139,17 @@
         var nvlAuto = 0;
         var quatro = 0;
 
+
+
         ///////////////////PEIXE
-        function Pescar(){    
-            totalPx += qtdPx;
+        function Pescar(){   
+            if (nvlProd == 4) {
+                totalPx += 1000;
+            } else {
+            totalPx += qtdPx*prod;
             qtdPxTela.textContent = totalPx;    
             totalVenPx.textContent = valorPx * totalPx;
+            }
         }
 
         function UpgradePx(){
@@ -286,18 +293,18 @@
         function NavBar(esc){
             switch(esc){
                 case 1:
-                    if(nvlVendas < 5 && totalDin > precoVendas){
+                    if(nvlVendas < 5 && totalDin >= precoVendas){
                         bonus = bonus * 2;
                         nvlVendas += 1;
                         precoVendas = precoVendas * 1.5;
-                        document.getElementById('txVendas').textContent = bonus,'x Vendas - ',precoVendas;
+                        document.getElementById('txVendas').textContent = (bonus + 'x VENDAS - ' + precoVendas);
                     } else {
                         document.getElementById('txVendas').style.color = ('#fecdd3');
                     }
                     
                 break;
                 case 2:
-                    if(dois > 4 && totalDin > 5000){
+                    if(nvlProd < 5 && totalDin >= precoProd){
                         maxx = 2;
                         dois += 1;
                         document.getElementById('doisdois').style.color = ('#ee7a88');
@@ -311,7 +318,7 @@
                     } 
                 break;
                 case 4:                
-                totalDin = 0;                
+                totalDin = 10000;                
                 dinTela.textContent = totalDin;
                 break;
 
