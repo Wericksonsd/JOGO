@@ -11,10 +11,10 @@
     <header>SUSHI MANIA</header>
 
     <div class="menubar">
-        <p onclick="NavBar(1)" id="umum">2X VENDAS - 10000</p>
-        <p onclick="NavBar(2)" id="doisdois">2X PRODUÇÃO - 5000</p>
-        <p onclick="NavBar(3)" id="trestres">PESCA AUTOMATICA - 10000</p>        
-        <p onclick="NavBar(4)" id="quaqua">PIX BOLSONARO</p>
+        <p onclick="NavBar(1)" id="txVendas">2x VENDAS - 10000</p>
+        <p onclick="NavBar(2)" id="txProd">2X PRODUÇÃO - 5000</p>
+        <p onclick="NavBar(3)" id="txAuto">PESCA AUTOMATICA - 10000</p>        
+        <p onclick="NavBar(4)" id="txPix">PIX BOLSONARO</p>
     </div>
 
     <main>
@@ -131,8 +131,11 @@
         ///////////////////////////////MENU
         var pix = document.getElementById('pix');
         var precoVendas = 10000;
+        var nvlVendas = 0;
         var precoProd = 5000;
-        var orecoAuto = 10000;
+        var nvlProd = 0;
+        var precoAuto = 10000;
+        var nvlAuto = 0;
         var quatro = 0;
 
         ///////////////////PEIXE
@@ -283,11 +286,15 @@
         function NavBar(esc){
             switch(esc){
                 case 1:
-                    if(um == 0 && totalDin > 10000){
-                        bonus * 2;
-                        um = 1;
-                        document.getElementById('umum').style.color = ('#ee7a88');
-                    }                    
+                    if(nvlVendas < 5 && totalDin > precoVendas){
+                        bonus = bonus * 2;
+                        nvlVendas += 1;
+                        precoVendas = precoVendas * 1.5;
+                        document.getElementById('txVendas').textContent = bonus,'x Vendas - ',precoVendas;
+                    } else {
+                        document.getElementById('txVendas').style.color = ('#fecdd3');
+                    }
+                    
                 break;
                 case 2:
                     if(dois > 4 && totalDin > 5000){
