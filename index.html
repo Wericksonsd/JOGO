@@ -145,6 +145,7 @@
             totalVenCt.textContent = (valorCt * totalCt)*bonus;
             totalVenSs.textContent = (valorSs * totalSs)*bonus;
             totalVenPc.textContent = (valorPc * totalPc)*bonus;
+            dinTela.textContent = totalDin;
         }
 
         ///////////////////PEIXE
@@ -302,7 +303,9 @@
                     if(nvlVendas < 5 && totalDin >= precoVendas){
                         bonus = bonus * 2;
                         nvlVendas += 1;
-                        precoVendas = precoVendas * 1.5;
+                        totalDin -= precoVendas;
+                        precoVendas = precoVendas * 1.5;                        
+                        totalVendasTX();
                         document.getElementById('txVendas').textContent = (bonus + 'x VENDAS - ' + precoVendas);
                     } else {
                         document.getElementById('txVendas').style.color = ('#fecdd3');
@@ -311,9 +314,12 @@
                 break;
                 case 2:
                     if(nvlProd < 5 && totalDin >= precoProd){
-                        maxx += 2;
+                        prod *= 2;
                         nvlProd += 1;
-                        document.getElementById('txProd').style.color = ('#ee7a88');
+                        totalDin -= precoProd;
+                        precoProd *= 3;
+                        totalVendasTX();
+                        document.getElementById('txProd').textContent = (prod + 'x PRODUCAO - ' + precoProd);
                     } else {
                         document.getElementById('txProd').style.color = ('#fecdd3');
                     }
