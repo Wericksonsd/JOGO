@@ -140,15 +140,21 @@
         var quatro = 0;
 
 
+        function totalVendasTX(){                
+            totalVenPx.textContent = (valorPx * totalPx)*bonus;                
+            totalVenCt.textContent = (valorCt * totalCt)*bonus;
+            totalVenSs.textContent = (valorSs * totalSs)*bonus;
+            totalVenPc.textContent = (valorPc * totalPc)*bonus;
+        }
 
         ///////////////////PEIXE
         function Pescar(){   
             if (nvlProd == 4) {
-                totalPx += 1000;
+                totalPx = 1000*qtdPx;
             } else {
             totalPx += qtdPx*prod;
             qtdPxTela.textContent = totalPx;    
-            totalVenPx.textContent = valorPx * totalPx;
+            totalVendasTX();
             }
         }
 
@@ -168,24 +174,24 @@
             totalDin += (valorPx * totalPx)* bonus;
             dinTela.textContent = totalDin;
             totalPx = 0;  
-            qtdPxTela.textContent = totalPx;    
-            totalVenPx.textContent = valorPx * totalPx;
+            qtdPxTela.textContent = totalPx;
+            totalVendasTX();
             Rick();
         }
 
         ////////////////////CORTE
         function Cortar(){
-            var mx = 1;
             if(totalPx > 0){   
-                if(maxx == 2){
-                    mx = totalPx;
+                if(nvlProd == 4){
+                    totalCt += qtdCt*totalPx;
+                    totalPx = 0;
+                } else {
+                    totalCt += qtdCt*prod;
+                    totalPx -= prod;
                 }
-            totalCt += qtdCt*mx;
-            totalPx -= 1*mx;
-            qtdCtTela.textContent = totalCt; 
-            qtdPxTela.textContent = totalPx;    
-            totalVenPx.textContent = valorPx * totalPx;                
-            totalVenCt.textContent = valorCt * totalCt;
+                qtdCtTela.textContent = totalCt; 
+                qtdPxTela.textContent = totalPx;
+                totalVendasTX();
             }
         }
 
@@ -206,23 +212,23 @@
             dinTela.textContent = totalDin;
             totalCt = 0;  
             qtdCtTela.textContent = totalCt;    
-            totalVenCt.textContent = valorCt * totalCt;
+            totalVendasTX();
             Rick();
         }
 
         /////////////////////PICAR
         function Picar(){
-            var mx = 1;
             if(totalCt > 0){  
-                if(maxx == 2){
-                    mx = totalCt;
-                } 
-            totalPc += qtdPc*mx;
-            totalCt -= 1*mx;
-            qtdCtTela.textContent = totalCt; 
-            qtdPcTela.textContent = totalPc;    
-            totalVenPc.textContent = valorPc * totalPc;                
-            totalVenCt.textContent = valorCt * totalCt;
+                if(nvlProd == 4){
+                    totalPc += qtdPc*totalCt;
+                    totalCt = 0;
+                } else {
+                    totalPc += qtdPc*prod;
+                    totalCt -= prod;  
+                }            
+                qtdCtTela.textContent = totalCt; 
+                qtdPcTela.textContent = totalPc;    
+                totalVendasTX();
             }
         }
 
@@ -305,10 +311,12 @@
                 break;
                 case 2:
                     if(nvlProd < 5 && totalDin >= precoProd){
-                        maxx = 2;
-                        dois += 1;
-                        document.getElementById('doisdois').style.color = ('#ee7a88');
-                    } 
+                        maxx += 2;
+                        nvlProd += 1;
+                        document.getElementById('txProd').style.color = ('#ee7a88');
+                    } else {
+                        document.getElementById('txProd').style.color = ('#fecdd3');
+                    }
                 break;
                 case 3:
                     if(tres == 0 && totalDin > 50000){
